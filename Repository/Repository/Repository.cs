@@ -10,7 +10,6 @@ namespace Repository
     {
         private readonly DeliveryContext context;
         private DbSet<T> entities;
-        //string errorMessage = string.Empty;
 
         public Repository(DeliveryContext context)
         {
@@ -21,7 +20,6 @@ namespace Repository
         {
             return entities.AsEnumerable();
         }
-
 
         public T Get(long id)
         {

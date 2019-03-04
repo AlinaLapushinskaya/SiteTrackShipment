@@ -8,12 +8,9 @@ namespace SiteTrackShipment.ViewModels
 {
     public class RegistrationModel
     {
-        //[Key]
-        //public int Id { get; set; }
-
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress]
-        //[DataType(DataType.EmailAddress)]
+ 
         public string Email { get; set; }
 
         [Required]

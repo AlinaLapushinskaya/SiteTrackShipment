@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Date;
+using Repository;
+using Service;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +15,7 @@ namespace SiteTrackShipment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : Controller
     {
         private readonly DeliveryContext _context;
 
@@ -80,6 +83,7 @@ namespace SiteTrackShipment.Controllers
             return NoContent();
         }
 
+
         [Route("/api/protected")]
         [Authorize]
         private string Protected()
@@ -112,6 +116,7 @@ namespace SiteTrackShipment.Controllers
 
             return users;
         }
+
 
         private bool UsersExists(int id)
         {
