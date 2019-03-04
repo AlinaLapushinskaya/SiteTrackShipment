@@ -17,9 +17,8 @@ namespace SiteTrackShipment
             CreateWebHostBuilder(args).Build().Run();
             using (DeliveryContext db = new DeliveryContext())
             {
-                // получаем объекты из бд и выводим на консоль
                 var users = db.Users.ToList();
-                Console.WriteLine("Список объектов:");
+                Console.WriteLine("List of objects:");
                 foreach (Users u in users)
                 {
                     Console.WriteLine($"{u.Id}.{u.Email} - {u.Password}-{u.FirstName}-{u.LastName}-{u.Phone}-{u.SubscriptionStatus}-{u.IdRole}-{u.IdCarrier}-{u.IdCompany}");

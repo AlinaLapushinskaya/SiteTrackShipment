@@ -82,7 +82,7 @@ namespace SiteTrackShipment.Controllers
 
         [Route("/api/protected")]
         [Authorize]
-        public string Protected()
+        private string Protected()
         {
             return "Only if you have a valid token!";
         }

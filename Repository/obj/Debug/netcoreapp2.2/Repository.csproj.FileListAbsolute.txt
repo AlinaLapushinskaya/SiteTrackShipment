@@ -1,0 +1,5 @@
+C:\Users\User\source\repos\SiteTrackShipment\Repository\bin\Debug\netcoreapp2.2\Date.dll
+C:\Users\User\source\repos\SiteTrackShipment\Repository\obj\Debug\netcoreapp2.2\Repository.csprojAssemblyReference.cache
+C:\Users\User\source\repos\SiteTrackShipment\Repository\obj\Debug\netcoreapp2.2\Repository.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\SiteTrackShipment\Repository\obj\Debug\netcoreapp2.2\Repository.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\SiteTrackShipment\Repository\obj\Debug\netcoreapp2.2\Repository.AssemblyInfo.cs

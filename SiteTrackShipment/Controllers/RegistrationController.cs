@@ -38,7 +38,7 @@ namespace SiteTrackShipment.Controllers
             if (person == null)
             {
 
-                //хеширование
+                //hash
                 byte[] salt = new byte[128 / 8];
                 string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                     password: user.Password,
