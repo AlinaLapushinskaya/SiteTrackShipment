@@ -12112,8 +12112,10 @@
       "netcoreapp2.2": {
         "dependencies": {
           "Microsoft.AspNetCore.App": {
+            "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.0, )"
+            "version": "[2.2.0, )",
+            "autoReferenced": true
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",

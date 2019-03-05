@@ -12,7 +12,7 @@ using Repository.Repository;
 
 namespace SiteTrackShipment
 {
-    public class Startup  
+    public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -43,7 +43,7 @@ namespace SiteTrackShipment
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        { 
+        {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,9 +67,6 @@ namespace SiteTrackShipment
 
             app.UseSpa(spa =>
             {
-
-            https://go.microsoft.com/fwlink/?linkid=864501
-
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
