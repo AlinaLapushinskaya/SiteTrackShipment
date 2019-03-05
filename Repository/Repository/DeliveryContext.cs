@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Date;
+using Date.Models;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Repository
+namespace Repository.Repository
 {
     public class DeliveryContext : DbContext
     {
@@ -13,7 +13,7 @@ namespace Repository
         public virtual DbSet<Carrier> Carrier { get; set; }
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -62,7 +62,7 @@ namespace Repository
                 entity.Property(e => e.NameRole).HasMaxLength(255);
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.Email).HasMaxLength(255);
 

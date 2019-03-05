@@ -3440,6 +3440,9 @@
         }
       },
       "Date/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.App": "2.2.2"
+        },
         "runtime": {
           "Date.dll": {}
         }

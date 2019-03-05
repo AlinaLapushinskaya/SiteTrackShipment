@@ -9,25 +9,22 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SiteTrackShipment;
+using Repository.Repository;
+using Date.Models;
 
 namespace SiteTrackShipment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarriersController : ControllerBase
+     public class CarriersController : ICarriers
+
+
     {
         private readonly DeliveryContext _context;
 
         public CarriersController(DeliveryContext context)
         {
             _context = context;
-        }
-
-        // GET: api/Carriers
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Carrier>>> GetCarrier()
-        {
-            return await _context.Carrier.ToListAsync();
         }
 
         // GET: api/Carriers/5
@@ -44,35 +41,24 @@ namespace SiteTrackShipment.Controllers
             return carrier;
         }
 
-        // PUT: api/Carriers/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCarrier(int id, Carrier carrier)
+        private ActionResult<Carrier> NotFound()
         {
-            if (id != carrier.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(carrier).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CarrierExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            throw new NotImplementedException();
         }
+
+        // GET: api/Carriers/1
+        //[HttpGet("{ActiveStatus}")]
+        //public async Task<ActionResult<Carrier>> GetCarrier(string ActiveStatus)
+        //{
+        //    var status = await _context.Carrier.FindAsync(ActiveStatus);
+
+        //    if (status = false)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return status;
+        //}
 
         // POST: api/Carriers
         [HttpPost]
@@ -82,6 +68,11 @@ namespace SiteTrackShipment.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCarrier", new { id = carrier.Id }, carrier);
+        }
+
+        private ActionResult<Carrier> CreatedAtAction(string v, object p, Carrier carrier)
+        {
+            throw new NotImplementedException();
         }
 
         // DELETE: api/Carriers/5
@@ -97,12 +88,22 @@ namespace SiteTrackShipment.Controllers
             _context.Carrier.Remove(carrier);
             await _context.SaveChangesAsync();
 
-            return carrier;
+            return NotFound();
         }
 
         private bool CarrierExists(int id)
         {
             return _context.Carrier.Any(e => e.Id == id);
+        }
+
+        bool ICarriers.CarrierExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ActionResult<Carrier>> GetCarrier(string ActiveStatus)
+        {
+            throw new NotImplementedException();
         }
     }
 }

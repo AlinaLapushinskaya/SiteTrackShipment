@@ -3,49 +3,51 @@ using Date;
 using Repository;
 using System.Collections.Generic;
 using System.Text;
+using Service.User;
+using Repository.Repository;
 
-namespace Service
+namespace Service.User
 {
-    public class Users:IUser
+    public class UserService:IUserService
     {
-        private IRepository<Users> userRepository;
-        private IRepository<Users> userProfileRepository;
+        private IRepository<UserService> userRepository;
+        private IRepository<UserService> userProfileRepository;
 
-        public Users(IRepository<Users> userRepository, IRepository<Users> userProfileRepository)
+        public UserService(IRepository<UserService> userRepository, IRepository<UserService> userProfileRepository)
         {
             this.userRepository = userRepository;
             this.userProfileRepository = userProfileRepository;
         }
 
-        public IEnumerable<Users> GetUsers()
+        public IEnumerable<UserService> GetUsers()
         {
             return userRepository.GetAll();
         }
 
-        public Users GetUser(long id)
+        public UserService GetUser(long id)
         {
             return userRepository.Get(id);
         }
 
-        public void InsertUser(Users user)
+        public void InsertUser(UserService user)
         {
             userRepository.Insert(user);
         }
-        public void UpdateUser(Users user)
+        public void UpdateUser(UserService user)
         {
             userRepository.Update(user);
         }
 
         public void DeleteUser(long id)
         {
-            Users userProfile = userProfileRepository.Get(id);
+            UserService userProfile = userProfileRepository.Get(id);
             userProfileRepository.Remove(userProfile);
-            Users user = GetUser(id);
+            UserService user = GetUser(id);
             userRepository.Remove(user);
             userRepository.SaveChanges();
         }
 
-        public Users GetUserProfile(long id)
+        public UserService GetUserProfile(long id)
         {
             throw new NotImplementedException();
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Date
+namespace Date.Models
 {
     public class AddressBook
     {
@@ -12,6 +12,6 @@ namespace Date
         public string State { get; set; }
         public int? IdUser { get; set; }
 
-        public virtual Users IdUserNavigation { get; set; }
+        public virtual User IdUserNavigation { get; set; }
     }
 }

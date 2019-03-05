@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,9 +9,9 @@ namespace SiteTrackShipment.ViewModels
 {
     public class RegistrationModel
     {
-        [Required(ErrorMessage = "Email is required.")]
+        [Required (ErrorMessage = "Email is required.")]
         [EmailAddress]
- 
+
         public string Email { get; set; }
 
         [Required]
@@ -20,6 +21,7 @@ namespace SiteTrackShipment.ViewModels
         public string LastName { get; set; }
 
         [Required]
+        //[Authorize]
         public string Phone { get; set; }
 
         [DataType(DataType.Password)]
@@ -27,7 +29,7 @@ namespace SiteTrackShipment.ViewModels
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Required(ErrorMessage = "PasswordConfirm is required.")]
+        [Required (ErrorMessage = "PasswordConfirm is required.")]
         public string ConfirmPassword { get; set; }
 
 

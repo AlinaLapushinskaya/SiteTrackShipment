@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SiteTrackShipment.Controllers;
+using Repository.Repository;
 
 namespace SiteTrackShipment
 {
-    public class Startup: Migration
+    public class Startup  
     {
         public Startup(IConfiguration configuration)
         {
@@ -34,6 +36,48 @@ namespace SiteTrackShipment
       options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
 
 
+            services.AddScoped<IRegistration, RegistrationController>();
+            services.AddScoped<ICarriers, CarriersController>();
+            services.AddScoped<IUsers, UsersController>();
+
         }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        { 
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
+            });
+
+            app.UseSpa(spa =>
+            {
+
+            https://go.microsoft.com/fwlink/?linkid=864501
+
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
+        }
+
     }
 }

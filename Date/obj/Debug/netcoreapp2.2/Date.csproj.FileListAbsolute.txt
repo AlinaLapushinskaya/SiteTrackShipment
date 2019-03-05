@@ -7,3 +7,5 @@ C:\Users\User\source\repos\SiteTrackShipment\Date\obj\Debug\netcoreapp2.2\Date.A
 C:\Users\User\source\repos\SiteTrackShipment\Date\obj\Debug\netcoreapp2.2\Date.AssemblyInfo.cs
 C:\Users\User\source\repos\SiteTrackShipment\Date\obj\Debug\netcoreapp2.2\Date.dll
 C:\Users\User\source\repos\SiteTrackShipment\Date\obj\Debug\netcoreapp2.2\Date.pdb
+C:\Users\User\source\repos\SiteTrackShipment\Date\bin\Debug\netcoreapp2.2\Date.runtimeconfig.json
+C:\Users\User\source\repos\SiteTrackShipment\Date\bin\Debug\netcoreapp2.2\Date.runtimeconfig.dev.json

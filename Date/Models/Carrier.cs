@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Date
+namespace Date.Models
 {
     public class Carrier
     {
         public Carrier()
         {
-            Users = new HashSet<Users>();
+            Users = new HashSet<User>();
         }
 
         public int Id { get; set; }
@@ -17,6 +17,13 @@ namespace Date
         public string Code { get; set; }
         public string Logotip { get; set; }
 
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+
+        public static implicit operator Carrier(bool v)
+        {
+            throw new NotImplementedException();
+        }
+
+    
     }
 }

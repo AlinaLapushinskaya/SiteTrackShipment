@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Date
+namespace Date.Models
 {
-    public class Users
+    public class User
     {
-        public Users()
+        public User()
         {
             AddressBook = new HashSet<AddressBook>();
         }
