@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Date.Models;
 using Repository.Repository;
-using SiteTrackShipment.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Service.Interfaces;
 
@@ -47,11 +46,6 @@ namespace SiteTrackShipment.Controllers
             }
 
             return users;
-        }
-
-        private ActionResult<User> NotFound()
-        {
-            throw new NotImplementedException();
         }
 
 

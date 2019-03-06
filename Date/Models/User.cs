@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Repository.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Date.Models
 {
-    public class User
+    public class User:IEntity
     {
         public User()
         {
@@ -16,6 +17,8 @@ namespace Date.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
+
+
         public bool? SubscriptionStatus { get; set; }
         public int? IdRole { get; set; }
         public int? IdCarrier { get; set; }

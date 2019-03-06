@@ -8,7 +8,7 @@ namespace Repository.Interfaces
     public interface IRepository<T>
     {
         IEnumerable<T> GetAll();
-        //T Get(long id);
+        T Get(long id);
         //T Get(string Email);
         void Insert(T entity);
         void Update(T entity);

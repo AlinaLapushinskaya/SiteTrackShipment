@@ -19,40 +19,40 @@ namespace SiteTrackShipment.Controllers
     {
 
         [HttpPost("/token")]
-        public async Task Token()
-        {
-            var username = Request.Form["username"];
-            var password = Request.Form["password"];
+        //public async Task Token()
+        //{
+        //    var username = Request.Form["username"];
+        //    var password = Request.Form["password"];
 
-            var identity = GetIdentity(username, password);
-            if (identity == null)
-            {
-                Response.StatusCode = 400;
-                await Response.WriteAsync("Invalid username or password.");
-                return;
-            }
+        //    var identity = GetIdentity(username, password);
+        //    if (identity == null)
+        //    {
+        //        Response.StatusCode = 400;
+        //        await Response.WriteAsync("Invalid username or password.");
+        //        return;
+        //    }
 
-            var now = DateTime.UtcNow;
+        //    var now = DateTime.UtcNow;
             
-            var jwt = new JwtSecurityToken(
-                    issuer: AuthOption.ISSUER,
-                    audience: AuthOption.AUDIENCE,
-                    notBefore: now,
-                    claims: identity.Claims,
-                    expires: now.Add(TimeSpan.FromMinutes(AuthOption.LIFETIME)),
-                    signingCredentials: new SigningCredentials(AuthOption.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
-            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
+        //    var jwt = new JwtSecurityToken(
+        //            issuer: AuthOption.ISSUER,
+        //            audience: AuthOption.AUDIENCE,
+        //            notBefore: now,
+        //            claims: identity.Claims,
+        //            expires: now.Add(TimeSpan.FromMinutes(AuthOption.LIFETIME)),
+        //            signingCredentials: new SigningCredentials(AuthOption.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+        //    var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-            var response = new
-            {
-                access_token = encodedJwt,
-                username = identity.Name
-            };
+        //    var response = new
+        //    {
+        //        access_token = encodedJwt,
+        //        username = identity.Name
+        //    };
 
-            // сериализация ответа
-            Response.ContentType = "application/json";
-            await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
-        }
+        //    // сериализация ответа
+        //    Response.ContentType = "application/json";
+        //    await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
+        //}
 
         private ClaimsIdentity GetIdentity(string email, string password)
         {

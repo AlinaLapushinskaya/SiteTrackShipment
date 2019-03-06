@@ -23,10 +23,10 @@ namespace Service.ImpUser
             return userRepository.GetAll();
         }
 
-        //public User GetUser(long id)
-        //{
-           // return userRepository.Get(id);
-        //}
+        public User GetUser(long id)
+        {
+            return userRepository.Get(id);
+        }
         //public UserService GetUser(string Email)
         //{
         //    return userRepository.Get(Email);

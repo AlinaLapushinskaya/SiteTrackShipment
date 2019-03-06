@@ -11,13 +11,13 @@ using Microsoft.EntityFrameworkCore;
 using SiteTrackShipment;
 using Repository.Repository;
 using Date.Models;
-using SiteTrackShipment.Interfaces;
+
 
 namespace SiteTrackShipment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-     public class CarriersController : ICarriers
+     public class CarriersController : ControllerBase
 
     {
         private readonly DeliveryContext _context;
@@ -96,10 +96,10 @@ namespace SiteTrackShipment.Controllers
             return _context.Carrier.Any(e => e.Id == id);
         }
 
-        bool ICarriers.CarrierExists(int id)
-        {
-            throw new NotImplementedException();
-        }
+        //bool ICarriers.CarrierExists(int id)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public Task<ActionResult<Carrier>> GetCarrier(string ActiveStatus)
         {

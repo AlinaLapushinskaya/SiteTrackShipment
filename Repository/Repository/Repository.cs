@@ -6,10 +6,11 @@ using System.Linq;
 using Repository.Repository;
 using Repository.Interfaces;
 using System.Linq.Expressions;
+using Date.Models;
 
 namespace Repository.Repository
 {
-    public class Repository<T> : IRepository<T> where T:class
+    public class Repository<T> : IRepository<T> where T:Entity
     {
         private readonly DeliveryContext context;
         private DbSet<T> entities;
@@ -24,10 +25,10 @@ namespace Repository.Repository
             return entities.AsEnumerable();
         }
 
-        //public T Get(long id)
-        //{
-        //    return entities.SingleOrDefault(s => s.Id == id);
-        //}
+        public T Get(long id)
+        {
+            return entities.SingleOrDefault(s => s.Id == id);
+        }
         //public T Get(string email)
         //{
         //    return entities.SingleOrDefault(s => s.Email == email);

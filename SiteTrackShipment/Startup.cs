@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SiteTrackShipment.Controllers;
-using SiteTrackShipment.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using SiteTrackShipment.ViewModels;
 using Microsoft.IdentityModel.Tokens;
@@ -42,8 +41,8 @@ namespace SiteTrackShipment
             services.AddDbContext<DeliveryContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("BloggingDatabase")));
 
-            services.AddScoped<ICarriers, CarriersController>()
-                .AddScoped(typeof(IRepository<>), typeof(Repository<>))
+            //services.AddScoped<ICarriers, CarriersController>()
+                services.AddScoped(typeof(IRepository<>), typeof(Repository<>))
                 .AddScoped<IUserService, UserService>();
             //services.AddScoped<IUsers, UsersController>();
 
