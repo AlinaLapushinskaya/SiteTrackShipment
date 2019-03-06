@@ -7,23 +7,16 @@ using System.Threading.Tasks;
 using Date.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using Repository.Repository;
 using SiteTrackShipment.ViewModels;
 
 namespace SiteTrackShipment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
-        private DeliveryContext _context;
-        public AccountController(DeliveryContext context)
-        {
-            _context = context;
-        }
 
         [HttpPost("/token")]
         public async Task Token()
@@ -40,7 +33,7 @@ namespace SiteTrackShipment.Controllers
             }
 
             var now = DateTime.UtcNow;
-         
+            
             var jwt = new JwtSecurityToken(
                     issuer: AuthOption.ISSUER,
                     audience: AuthOption.AUDIENCE,
@@ -56,28 +49,28 @@ namespace SiteTrackShipment.Controllers
                 username = identity.Name
             };
 
-           
+            // сериализация ответа
             Response.ContentType = "application/json";
             await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
         }
 
-        private ClaimsIdentity GetIdentity(string username, string password)
+        private ClaimsIdentity GetIdentity(string email, string password)
         {
-            User person = _context.Users.FirstOrDefault(x => x.Email == username && x.Password == password);
-            if (person != null)
-            {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, person.Email),
-                   
-                };
-                ClaimsIdentity claimsIdentity =
-                new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
-                    ClaimsIdentity.DefaultRoleClaimType);
-                return claimsIdentity;
-            }
+            //User person = User.FirstOrDefault(x => x.Login == email && x.Password == password);
+            //if (person != null)
+            //{
+            //    var claims = new List<Claim>
+            //    {
+            //        new Claim(ClaimsIdentity.DefaultNameClaimType, person.Email),
+            //        new Claim(ClaimsIdentity.DefaultRoleClaimType, person.Password)
+            //    };
+            //    ClaimsIdentity claimsIdentity =
+            //    new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
+            //        ClaimsIdentity.DefaultRoleClaimType);
+            //    return claimsIdentity;
+            //}
 
-           
+            // если пользователя не найдено
             return null;
         }
     }

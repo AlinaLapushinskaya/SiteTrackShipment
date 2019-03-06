@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Repository.Repository;
+using Repository.Interfaces;
+using System.Linq.Expressions;
 
 namespace Repository.Repository
 {
-    public class Repository<T> : IRepository<T> where T:class, IEntity
+    public class Repository<T> : IRepository<T> where T:class
     {
         private readonly DeliveryContext context;
         private DbSet<T> entities;
@@ -22,10 +24,14 @@ namespace Repository.Repository
             return entities.AsEnumerable();
         }
 
-        public T Get(long id)
-        {
-            return entities.SingleOrDefault(s => s.Id == id);
-        }
+        //public T Get(long id)
+        //{
+        //    return entities.SingleOrDefault(s => s.Id == id);
+        //}
+        //public T Get(string email)
+        //{
+        //    return entities.SingleOrDefault(s => s.Email == email);
+        //}
         public void Insert(T entity)
         {
             if (entity == null)
@@ -66,6 +72,12 @@ namespace Repository.Repository
         public void SaveChanges()
         {
             context.SaveChanges();
+        }
+
+
+        T IRepository<T>.existEntity(Expression<Func<T, bool>> predicate)
+        {
+            return entities.SingleOrDefault(predicate);
         }
     }  
 }

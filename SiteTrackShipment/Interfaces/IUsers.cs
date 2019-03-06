@@ -5,11 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SiteTrackShipment.Controllers
+namespace SiteTrackShipment.Interfaces
 {
     public interface IUsers
     {
-        
         Task<ActionResult<User>> GetUsers(int id);
         string Protected();
         Task<ActionResult<User>> PostUsers(User users);

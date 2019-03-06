@@ -11,12 +11,13 @@ using Microsoft.AspNetCore.Mvc;
 using SiteTrackShipment.ViewModels;
 using Repository.Repository;
 using Date.Models;
+using SiteTrackShipment.Interfaces;
 
 namespace SiteTrackShipment.Controllers
 {
     [Route("api/reg")]
     [ApiController]
-    public class RegistrationController :IRegistration
+    public class RegistrationController : ControllerBase
     {
         private readonly DeliveryContext _context;
        
@@ -66,16 +67,6 @@ namespace SiteTrackShipment.Controllers
 
             }
             return Ok("");
-        }
-
-        private IActionResult BadRequest(string v)
-        {
-            throw new NotImplementedException();
-        }
-
-        private IActionResult Ok(string v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

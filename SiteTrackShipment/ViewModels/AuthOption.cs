@@ -10,7 +10,7 @@ namespace SiteTrackShipment.ViewModels
     public class AuthOption
     {
         public const string ISSUER = "MyAuthServer";
-        public const string AUDIENCE = "https://localhost:44367/";
+        public const string AUDIENCE = "http://localhost:59956";
         const string KEY = "mysupersecret_secretkey!123";
         public const int LIFETIME = 1;
         public static SymmetricSecurityKey GetSymmetricSecurityKey()

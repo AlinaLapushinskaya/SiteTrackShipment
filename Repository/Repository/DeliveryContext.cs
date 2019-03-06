@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Date;
+using Repository.Repository;
 using Date.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,15 @@ namespace Repository.Repository
 {
     public class DeliveryContext : DbContext
     {
+        public DeliveryContext()
+        {
+        }
+
+        public  DeliveryContext(DbContextOptions<DeliveryContext> options) : base(options)
+        {
+
+        }
+
         public virtual DbSet<AddressBook> AddressBook { get; set; }
         public virtual DbSet<Carrier> Carrier { get; set; }
         public virtual DbSet<Company> Company { get; set; }

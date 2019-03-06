@@ -25,5 +25,6 @@ namespace Date.Models
         public virtual Company IdCompanyNavigation { get; set; }
         public virtual Role IdRoleNavigation { get; set; }
         public virtual ICollection<AddressBook> AddressBook { get; set; }
+        public string Token { get; set; }
     }
 }
