@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Date.Models
 {
-    public class User:IEntity
+    public class User:Entity
     {
         public User()
         {
@@ -28,6 +28,5 @@ namespace Date.Models
         public virtual Company IdCompanyNavigation { get; set; }
         public virtual Role IdRoleNavigation { get; set; }
         public virtual ICollection<AddressBook> AddressBook { get; set; }
-        public string Token { get; set; }
     }
 }
